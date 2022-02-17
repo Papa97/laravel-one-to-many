@@ -20,7 +20,20 @@
                 <div class="alert alert-danger">{{$message}}</div> 
             @enderror
 
-          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="category_id">Categoria</label>
+          <select class="custom-select" @error('category_id') is-invalid @enderror aria-label="Default select example" id="category_id" name="category_id">
+            <option >Categorie</option>
+            @foreach ($categories as $category)
+                <option value="{{$category->id}}" {{old('category_id', $post->category_id) == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+            @endforeach
+          </select>
+          @error('category_id')
+                <div class="alert alert-danger">{{$message}}</div> 
+            @enderror
+        </div>
         
         <div class="form-group form-check">
 

@@ -4,14 +4,17 @@
 <div class="container">
     <h1>Titolo: {{$post->title}}</h1>
     <div>slug: {{$post->slug}}</div>
-    <p>{{$post->content}}</p>
+    <p>content: {{$post->content}}</p>
+
+    @if ($post->category)
+        <div>Categoria: {{$post->category->name}}</div>
+    @endif
         @if ($post->published == true)
             <div>pubblicato</div>
         @else
             <div>non pubblicato</div>
         @endif
 
-    <div>{{$post->category_id}}</div>
 </div>
 
 @endsection

@@ -22,7 +22,7 @@
           </div>
         
         <div class="form-group">
-          <label for="category_id">Contenuto</label>
+          <label for="category_id">Categoria</label>
           <select class="custom-select" @error('category_id') is-invalid @enderror aria-label="Default select example" id="category_id" name="category_id">
             <option >Categorie</option>
             @foreach ($categories as $category)

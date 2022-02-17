@@ -106,7 +106,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("admin.posts.edit", compact('post'));
+        $categories = Category::all();
+        return view("admin.posts.edit", compact('post', 'categories'));
     }
 
     /**
@@ -119,15 +120,15 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
 
+        $data = $request->all();
 
         $request->validate([
             "title" => "required|string|max:100",
             "content" => "required",
-            "published" => "sometimes|accepted"
+            "published" => "sometimes|accepted",
+            "category_id" => "nullable|exists:categories,id"
+
         ]);
-
-        $data = $request->all();
-
 
         if($post->title != $data['title']) {
             $post->title = $data['title'];
@@ -145,10 +146,9 @@ class PostController extends Controller
             }
         }
 
-
         $post->content = $data['content'];
         $post->published = isset($data["published"]);
-
+        $post->category_id = $data['category_id'];
         $post->save();
 
         return redirect()->route('posts.show', $post->id);
