@@ -10967,3 +10967,16 @@ a.text-dark:focus {
   text-align: end;
 }
 
+.body {
+  background-color: #48466d;
+  color: #3d84a8;
+}
+
+.table {
+  color: #3d84a8;
+}
+
+.btn {
+  border-color: #3d84a8;
+}
+
